@@ -1,0 +1,251 @@
+[gd_scene load_steps=19 format=3 uid="uid://c42wuxeaaa78w"]
+
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_qfx0k"]
+[ext_resource type="PackedScene" uid="uid://c6433udp72dxy" path="res://Scenes/Ball.tscn" id="2_t3v25"]
+[ext_resource type="PackedScene" uid="uid://rqk40jm04ja7" path="res://Scenes/FadingLabel.tscn" id="3_e7qq5"]
+[ext_resource type="Script" path="res://Scripts/ExitZone.cs" id="4_dgbnk"]
+[ext_resource type="PackedScene" uid="uid://c0mhhd38cw24x" path="res://Scenes/RoundPeg.tscn" id="5_gce5c"]
+[ext_resource type="PackedScene" uid="uid://chwjx6y62ubs" path="res://Scenes/SquarePeg.tscn" id="6_3h5rt"]
+[ext_resource type="PackedScene" uid="uid://dvn1ps5qyeqi7" path="res://Scenes/RoundActionPeg.tscn" id="7_p51o5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l0wm5"]
+bounce = 0.2
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mcs3w"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b6bhl"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mefaw"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xoas4"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ym8h"]
+size = Vector2(88, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyglk"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syeci"]
+size = Vector2(40, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fll1y"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5pfl"]
+size = Vector2(88, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiqki"]
+size = Vector2(64, 8)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_qfx0k")
+BallScene = ExtResource("2_t3v25")
+FadingLabelScene = ExtResource("3_e7qq5")
+
+[node name="WorldBorders" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_l0wm5")
+metadata/_edit_group_ = true
+
+[node name="Top" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(1280, 0)
+shape = SubResource("WorldBoundaryShape2D_mcs3w")
+
+[node name="Left" type="CollisionShape2D" parent="WorldBorders"]
+shape = SubResource("WorldBoundaryShape2D_b6bhl")
+
+[node name="Right" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(1280, 720)
+shape = SubResource("WorldBoundaryShape2D_mefaw")
+
+[node name="ExitZones" type="Node2D" parent="."]
+
+[node name="ExitLeft" type="Area2D" parent="ExitZones"]
+position = Vector2(32, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitLeft"]
+shape = SubResource("RectangleShape2D_xoas4")
+
+[node name="ExitLeft2" type="Area2D" parent="ExitZones"]
+position = Vector2(312, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitLeft2"]
+shape = SubResource("RectangleShape2D_3ym8h")
+
+[node name="ExitLeft3" type="Area2D" parent="ExitZones"]
+position = Vector2(520, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitLeft3"]
+shape = SubResource("RectangleShape2D_dyglk")
+
+[node name="ExitMiddle" type="Area2D" parent="ExitZones"]
+position = Vector2(640, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitMiddle"]
+shape = SubResource("RectangleShape2D_syeci")
+
+[node name="ExitRight3" type="Area2D" parent="ExitZones"]
+position = Vector2(760, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitRight3"]
+shape = SubResource("RectangleShape2D_fll1y")
+
+[node name="ExitRight2" type="Area2D" parent="ExitZones"]
+position = Vector2(968, 716)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitRight2"]
+shape = SubResource("RectangleShape2D_q5pfl")
+
+[node name="ExitRight" type="Area2D" parent="ExitZones"]
+position = Vector2(1249.47, 708.682)
+script = ExtResource("4_dgbnk")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZones/ExitRight"]
+position = Vector2(-1.47314, 7.31799)
+shape = SubResource("RectangleShape2D_wiqki")
+
+[node name="ClickCooldown" type="Timer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 128.0
+offset_bottom = 48.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 128.0
+offset_right = 1280.0
+offset_bottom = 136.0
+color = Color(0.784314, 0.784314, 0.784314, 0.501961)
+
+[node name="ActionlessPegSet" type="StaticBody2D" parent="."]
+modulate = Color(0.2, 0.6, 1, 1)
+
+[node name="RoundPeg" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(192, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="RoundPeg2" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(320, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="RoundPeg3" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(448, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="RoundPeg4" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(832, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="RoundPeg5" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(960, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="RoundPeg6" parent="ActionlessPegSet" instance=ExtResource("5_gce5c")]
+position = Vector2(1088, 192)
+scale = Vector2(0.4, 0.4)
+
+[node name="SquarePeg" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(64, 224)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg2" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(128, 320)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg3" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(64, 416)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg4" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(1216, 224)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg5" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(1152, 320)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg6" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(1216, 416)
+rotation = 0.785398
+scale = Vector2(0.6, 0.6)
+
+[node name="SquarePeg7" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(160, 720)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+
+[node name="SquarePeg8" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(416, 720)
+rotation = 0.785398
+
+[node name="SquarePeg9" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(584, 760)
+rotation = 1.309
+scale = Vector2(0.9, 0.9)
+
+[node name="SquarePeg10" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(696, 760)
+rotation = -1.309
+scale = Vector2(0.9, 0.9)
+
+[node name="SquarePeg11" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(864, 720)
+rotation = 0.785398
+
+[node name="SquarePeg12" parent="ActionlessPegSet" instance=ExtResource("6_3h5rt")]
+position = Vector2(1120, 720)
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+
+[node name="ActionPegSet" type="StaticBody2D" parent="."]
+
+[node name="RoundActionPeg" parent="ActionPegSet" instance=ExtResource("7_p51o5")]
+modulate = Color(0.6, 1, 0.6, 1)
+position = Vector2(256, 256)
+scale = Vector2(0.75, 0.75)
+
+[node name="RoundActionPeg2" parent="ActionPegSet" instance=ExtResource("7_p51o5")]
+modulate = Color(0.6, 1, 0.6, 1)
+position = Vector2(384, 256)
+scale = Vector2(0.75, 0.75)
+
+[node name="RoundActionPeg3" parent="ActionPegSet" instance=ExtResource("7_p51o5")]
+modulate = Color(0.6, 1, 0.6, 1)
+position = Vector2(896, 256)
+scale = Vector2(0.75, 0.75)
+
+[node name="RoundActionPeg4" parent="ActionPegSet" instance=ExtResource("7_p51o5")]
+modulate = Color(0.6, 1, 0.6, 1)
+position = Vector2(1024, 256)
+scale = Vector2(0.75, 0.75)
+
+[connection signal="body_exited" from="ExitZones/ExitLeft" to="ExitZones/ExitLeft" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitLeft2" to="ExitZones/ExitLeft2" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitLeft3" to="ExitZones/ExitLeft3" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitMiddle" to="ExitZones/ExitMiddle" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitRight3" to="ExitZones/ExitRight3" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitRight2" to="ExitZones/ExitRight2" method="OnExitZoneBodyExited"]
+[connection signal="body_exited" from="ExitZones/ExitRight" to="ExitZones/ExitRight" method="OnExitZoneBodyExited"]
+[connection signal="timeout" from="ClickCooldown" to="." method="OnClickCooldownTimeout"]

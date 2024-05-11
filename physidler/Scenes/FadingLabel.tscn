@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqk40jm04ja7"]
+
+[ext_resource type="Script" path="res://Scripts/FadingLabel.cs" id="1_k0r1f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4fm84"]
+
+[node name="FadingLabel" type="Label"]
+anchors_preset = -1
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_4fm84")
+horizontal_alignment = 1
+script = ExtResource("1_k0r1f")

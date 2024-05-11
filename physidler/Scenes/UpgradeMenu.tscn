@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2cc1u5s16hci"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeMenu.cs" id="1_myfrp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lj70"]
+font_size = 24
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="UpgradeMenu" type="VBoxContainer"]
+offset_right = 640.0
+offset_bottom = 41.0
+script = ExtResource("1_myfrp")
+
+[node name="TitleBar" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="TitleBar"]
+layout_mode = 2
+text = "Upgrade Menu"
+label_settings = SubResource("LabelSettings_1lj70")
+horizontal_alignment = 1
+
+[node name="UpgradeListPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="UpgradeList" type="VBoxContainer" parent="UpgradeListPanel"]
+layout_mode = 2

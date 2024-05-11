@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0mhhd38cw24x"]
+
+[ext_resource type="Texture2D" uid="uid://bx43ilfpgc08y" path="res://Sprites/borderedCircle.png" id="1_7at4v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7c8n"]
+radius = 52.0
+
+[node name="RoundPeg" type="CollisionShape2D"]
+shape = SubResource("CircleShape2D_t7c8n")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7at4v")

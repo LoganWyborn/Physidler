@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://chwjx6y62ubs"]
+
+[ext_resource type="Texture2D" uid="uid://yvntbd7np3s2" path="res://Sprites/borderedSquare.png" id="1_j4j0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcuwo"]
+size = Vector2(104, 104)
+
+[node name="SquarePeg" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_lcuwo")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j4j0f")

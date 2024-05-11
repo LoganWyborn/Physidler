@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvn1ps5qyeqi7"]
+
+[ext_resource type="Script" path="res://Scripts/ActionPeg.cs" id="1_4hwbs"]
+[ext_resource type="Texture2D" uid="uid://bx43ilfpgc08y" path="res://Sprites/borderedCircle.png" id="2_3yb75"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qo0c7"]
+radius = 25.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfme4"]
+radius = 27.0185
+
+[node name="Peg0" type="CollisionShape2D"]
+shape = SubResource("CircleShape2D_qo0c7")
+script = ExtResource("1_4hwbs")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3yb75")
+
+[node name="BounceDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceDetector"]
+shape = SubResource("CircleShape2D_jfme4")
+
+[connection signal="body_exited" from="BounceDetector" to="." method="OnBounceDetectorBodyExited"]

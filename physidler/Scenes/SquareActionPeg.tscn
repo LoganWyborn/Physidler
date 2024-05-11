@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b06o5v5r8okmj"]
+
+[ext_resource type="Script" path="res://Scripts/ActionPeg.cs" id="1_er4n1"]
+[ext_resource type="Texture2D" uid="uid://yvntbd7np3s2" path="res://Sprites/borderedSquare.png" id="2_1ciad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e1jd"]
+size = Vector2(104, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vig7q"]
+size = Vector2(106, 106)
+
+[node name="SquareActionPeg" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_6e1jd")
+script = ExtResource("1_er4n1")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.25, 0)
+texture = ExtResource("2_1ciad")
+
+[node name="BounceDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceDetector"]
+shape = SubResource("RectangleShape2D_vig7q")
+
+[connection signal="body_exited" from="BounceDetector" to="." method="OnBounceDetectorBodyExited"]
